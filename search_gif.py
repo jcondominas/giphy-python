@@ -7,7 +7,9 @@ PUBLIC_KEY = 'dc6zaTOxFJmzC'
 URL = 'http://api.giphy.com'
 SEARCH_PATH = '/v1/gifs/search'
 
-search_key = sys.argv[-1]
+search_key = ''
+for arg in sys.argv[1:]:
+    search_key = search_key + ' ' + arg
 payload = {'api_key': PUBLIC_KEY, 'q': search_key}
 r = requests.get(URL + SEARCH_PATH, params=payload)
 data = r.json()['data']
